@@ -42,13 +42,13 @@ public class RpcServerHandler extends SimpleChannelInboundHandler<Message> {
                 return;
             }*/
             RpcRequest.MRequest  mRequest= (RpcRequest.MRequest) msg;
-            logger.info("ClassName:{},Method:{},MessageType:{}",
-                    mRequest.getClassName(),mRequest.getMethod(),mRequest.getMessageType());
+            System.out.println("34234234");
+            /*logger.info("ClassName:{},Method:{},MessageType:{}",
+                    mRequest.getClassName(),mRequest.getMethod(),mRequest.getMessageType());*/
             Map<String,Any> rsMap= mRequest.getParamsMap();
-            logger.info("username:{}",rsMap.get("username").unpack(DataBase.MString.class));
+             logger.info("username:{}",rsMap.get("username").unpack(DataBase.MString.class));
             logger.info("age:{}",rsMap.get("age").unpack(DataBase.MInteger.class));
-            logger.info("bool:{}",rsMap.get("bool").unpack(DataBase.MBoolean.class));
-            logger.info("age:{}",rsMap.get("age").unpack(DataBase.MInteger.class));
+            logger.info("mbool:{}",rsMap.get("mbool").unpack(DataBase.MBoolean.class));
             logger.info("money:{}",rsMap.get("money").unpack(DataBase.MDouble.class));
             logger.info("bytes:{}",rsMap.get("bytes").unpack(DataBase.MByteString.class));
             //返回

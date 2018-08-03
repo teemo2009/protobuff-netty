@@ -35,10 +35,28 @@ public final class RpcResponse {
 
     /**
      * <pre>
+     *返回路由
+     * </pre>
+     *
+     * <code>string url = 2;</code>
+     */
+    String getUrl();
+    /**
+     * <pre>
+     *返回路由
+     * </pre>
+     *
+     * <code>string url = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getUrlBytes();
+
+    /**
+     * <pre>
      *消息提示
      * </pre>
      *
-     * <code>string message = 2;</code>
+     * <code>string message = 3;</code>
      */
     String getMessage();
     /**
@@ -46,7 +64,7 @@ public final class RpcResponse {
      *消息提示
      * </pre>
      *
-     * <code>string message = 2;</code>
+     * <code>string message = 3;</code>
      */
     com.google.protobuf.ByteString
         getMessageBytes();
@@ -56,7 +74,7 @@ public final class RpcResponse {
      *返回的数据类型
      * </pre>
      *
-     * <code>.MResponse.ResultType resultType = 3;</code>
+     * <code>.MResponse.ResultType resultType = 4;</code>
      */
     int getResultTypeValue();
     /**
@@ -64,7 +82,7 @@ public final class RpcResponse {
      *返回的数据类型
      * </pre>
      *
-     * <code>.MResponse.ResultType resultType = 3;</code>
+     * <code>.MResponse.ResultType resultType = 4;</code>
      */
     MResponse.ResultType getResultType();
 
@@ -73,7 +91,7 @@ public final class RpcResponse {
      *json返回格式
      * </pre>
      *
-     * <code>string jsonResult = 4;</code>
+     * <code>string jsonResult = 5;</code>
      */
     String getJsonResult();
     /**
@@ -81,7 +99,7 @@ public final class RpcResponse {
      *json返回格式
      * </pre>
      *
-     * <code>string jsonResult = 4;</code>
+     * <code>string jsonResult = 5;</code>
      */
     com.google.protobuf.ByteString
         getJsonResultBytes();
@@ -91,7 +109,7 @@ public final class RpcResponse {
      *序列化对象 N个
      * </pre>
      *
-     * <code>map&lt;string, .google.protobuf.Any&gt; result = 5;</code>
+     * <code>map&lt;string, .google.protobuf.Any&gt; result = 6;</code>
      */
     int getResultCount();
     /**
@@ -99,7 +117,7 @@ public final class RpcResponse {
      *序列化对象 N个
      * </pre>
      *
-     * <code>map&lt;string, .google.protobuf.Any&gt; result = 5;</code>
+     * <code>map&lt;string, .google.protobuf.Any&gt; result = 6;</code>
      */
     boolean containsResult(
             String key);
@@ -114,7 +132,7 @@ public final class RpcResponse {
      *序列化对象 N个
      * </pre>
      *
-     * <code>map&lt;string, .google.protobuf.Any&gt; result = 5;</code>
+     * <code>map&lt;string, .google.protobuf.Any&gt; result = 6;</code>
      */
     java.util.Map<String, com.google.protobuf.Any>
     getResultMap();
@@ -123,7 +141,7 @@ public final class RpcResponse {
      *序列化对象 N个
      * </pre>
      *
-     * <code>map&lt;string, .google.protobuf.Any&gt; result = 5;</code>
+     * <code>map&lt;string, .google.protobuf.Any&gt; result = 6;</code>
      */
 
     com.google.protobuf.Any getResultOrDefault(
@@ -134,7 +152,7 @@ public final class RpcResponse {
      *序列化对象 N个
      * </pre>
      *
-     * <code>map&lt;string, .google.protobuf.Any&gt; result = 5;</code>
+     * <code>map&lt;string, .google.protobuf.Any&gt; result = 6;</code>
      */
 
     com.google.protobuf.Any getResultOrThrow(
@@ -154,6 +172,7 @@ public final class RpcResponse {
     }
     private MResponse() {
       code_ = 0;
+      url_ = "";
       message_ = "";
       resultType_ = 0;
       jsonResult_ = "";
@@ -192,26 +211,32 @@ public final class RpcResponse {
             case 18: {
               String s = input.readStringRequireUtf8();
 
+              url_ = s;
+              break;
+            }
+            case 26: {
+              String s = input.readStringRequireUtf8();
+
               message_ = s;
               break;
             }
-            case 24: {
+            case 32: {
               int rawValue = input.readEnum();
 
               resultType_ = rawValue;
               break;
             }
-            case 34: {
+            case 42: {
               String s = input.readStringRequireUtf8();
 
               jsonResult_ = s;
               break;
             }
-            case 42: {
-              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+            case 50: {
+              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
                 result_ = com.google.protobuf.MapField.newMapField(
                     ResultDefaultEntryHolder.defaultEntry);
-                mutable_bitField0_ |= 0x00000010;
+                mutable_bitField0_ |= 0x00000020;
               }
               com.google.protobuf.MapEntry<String, com.google.protobuf.Any>
               result__ = input.readMessage(
@@ -249,7 +274,7 @@ public final class RpcResponse {
     protected com.google.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
-        case 5:
+        case 6:
           return internalGetResult();
         default:
           throw new RuntimeException(
@@ -535,14 +560,56 @@ public final class RpcResponse {
       return result == null ? Code.UNRECOGNIZED : result;
     }
 
-    public static final int MESSAGE_FIELD_NUMBER = 2;
+    public static final int URL_FIELD_NUMBER = 2;
+    private volatile Object url_;
+    /**
+     * <pre>
+     *返回路由
+     * </pre>
+     *
+     * <code>string url = 2;</code>
+     */
+    public String getUrl() {
+      Object ref = url_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        url_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     *返回路由
+     * </pre>
+     *
+     * <code>string url = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUrlBytes() {
+      Object ref = url_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (String) ref);
+        url_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int MESSAGE_FIELD_NUMBER = 3;
     private volatile Object message_;
     /**
      * <pre>
      *消息提示
      * </pre>
      *
-     * <code>string message = 2;</code>
+     * <code>string message = 3;</code>
      */
     public String getMessage() {
       Object ref = message_;
@@ -561,7 +628,7 @@ public final class RpcResponse {
      *消息提示
      * </pre>
      *
-     * <code>string message = 2;</code>
+     * <code>string message = 3;</code>
      */
     public com.google.protobuf.ByteString
         getMessageBytes() {
@@ -577,14 +644,14 @@ public final class RpcResponse {
       }
     }
 
-    public static final int RESULTTYPE_FIELD_NUMBER = 3;
+    public static final int RESULTTYPE_FIELD_NUMBER = 4;
     private int resultType_;
     /**
      * <pre>
      *返回的数据类型
      * </pre>
      *
-     * <code>.MResponse.ResultType resultType = 3;</code>
+     * <code>.MResponse.ResultType resultType = 4;</code>
      */
     public int getResultTypeValue() {
       return resultType_;
@@ -594,7 +661,7 @@ public final class RpcResponse {
      *返回的数据类型
      * </pre>
      *
-     * <code>.MResponse.ResultType resultType = 3;</code>
+     * <code>.MResponse.ResultType resultType = 4;</code>
      */
     public ResultType getResultType() {
       @SuppressWarnings("deprecation")
@@ -602,14 +669,14 @@ public final class RpcResponse {
       return result == null ? ResultType.UNRECOGNIZED : result;
     }
 
-    public static final int JSONRESULT_FIELD_NUMBER = 4;
+    public static final int JSONRESULT_FIELD_NUMBER = 5;
     private volatile Object jsonResult_;
     /**
      * <pre>
      *json返回格式
      * </pre>
      *
-     * <code>string jsonResult = 4;</code>
+     * <code>string jsonResult = 5;</code>
      */
     public String getJsonResult() {
       Object ref = jsonResult_;
@@ -628,7 +695,7 @@ public final class RpcResponse {
      *json返回格式
      * </pre>
      *
-     * <code>string jsonResult = 4;</code>
+     * <code>string jsonResult = 5;</code>
      */
     public com.google.protobuf.ByteString
         getJsonResultBytes() {
@@ -644,7 +711,7 @@ public final class RpcResponse {
       }
     }
 
-    public static final int RESULT_FIELD_NUMBER = 5;
+    public static final int RESULT_FIELD_NUMBER = 6;
     private static final class ResultDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
           String, com.google.protobuf.Any> defaultEntry =
@@ -675,7 +742,7 @@ public final class RpcResponse {
      *序列化对象 N个
      * </pre>
      *
-     * <code>map&lt;string, .google.protobuf.Any&gt; result = 5;</code>
+     * <code>map&lt;string, .google.protobuf.Any&gt; result = 6;</code>
      */
 
     public boolean containsResult(
@@ -695,7 +762,7 @@ public final class RpcResponse {
      *序列化对象 N个
      * </pre>
      *
-     * <code>map&lt;string, .google.protobuf.Any&gt; result = 5;</code>
+     * <code>map&lt;string, .google.protobuf.Any&gt; result = 6;</code>
      */
 
     public java.util.Map<String, com.google.protobuf.Any> getResultMap() {
@@ -706,7 +773,7 @@ public final class RpcResponse {
      *序列化对象 N个
      * </pre>
      *
-     * <code>map&lt;string, .google.protobuf.Any&gt; result = 5;</code>
+     * <code>map&lt;string, .google.protobuf.Any&gt; result = 6;</code>
      */
 
     public com.google.protobuf.Any getResultOrDefault(
@@ -722,7 +789,7 @@ public final class RpcResponse {
      *序列化对象 N个
      * </pre>
      *
-     * <code>map&lt;string, .google.protobuf.Any&gt; result = 5;</code>
+     * <code>map&lt;string, .google.protobuf.Any&gt; result = 6;</code>
      */
 
     public com.google.protobuf.Any getResultOrThrow(
@@ -753,21 +820,24 @@ public final class RpcResponse {
       if (code_ != Code.SUCCESS.getNumber()) {
         output.writeEnum(1, code_);
       }
+      if (!getUrlBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, url_);
+      }
       if (!getMessageBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, message_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, message_);
       }
       if (resultType_ != ResultType.JSON.getNumber()) {
-        output.writeEnum(3, resultType_);
+        output.writeEnum(4, resultType_);
       }
       if (!getJsonResultBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, jsonResult_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, jsonResult_);
       }
       com.google.protobuf.GeneratedMessageV3
         .serializeStringMapTo(
           output,
           internalGetResult(),
           ResultDefaultEntryHolder.defaultEntry,
-          5);
+          6);
       unknownFields.writeTo(output);
     }
 
@@ -781,15 +851,18 @@ public final class RpcResponse {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, code_);
       }
+      if (!getUrlBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, url_);
+      }
       if (!getMessageBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, message_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, message_);
       }
       if (resultType_ != ResultType.JSON.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(3, resultType_);
+          .computeEnumSize(4, resultType_);
       }
       if (!getJsonResultBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, jsonResult_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, jsonResult_);
       }
       for (java.util.Map.Entry<String, com.google.protobuf.Any> entry
            : internalGetResult().getMap().entrySet()) {
@@ -799,7 +872,7 @@ public final class RpcResponse {
             .setValue(entry.getValue())
             .build();
         size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(5, result__);
+            .computeMessageSize(6, result__);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -818,6 +891,8 @@ public final class RpcResponse {
 
       boolean result = true;
       result = result && code_ == other.code_;
+      result = result && getUrl()
+          .equals(other.getUrl());
       result = result && getMessage()
           .equals(other.getMessage());
       result = result && resultType_ == other.resultType_;
@@ -838,6 +913,8 @@ public final class RpcResponse {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + CODE_FIELD_NUMBER;
       hash = (53 * hash) + code_;
+      hash = (37 * hash) + URL_FIELD_NUMBER;
+      hash = (53 * hash) + getUrl().hashCode();
       hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
       hash = (53 * hash) + getMessage().hashCode();
       hash = (37 * hash) + RESULTTYPE_FIELD_NUMBER;
@@ -959,7 +1036,7 @@ public final class RpcResponse {
       protected com.google.protobuf.MapField internalGetMapField(
           int number) {
         switch (number) {
-          case 5:
+          case 6:
             return internalGetResult();
           default:
             throw new RuntimeException(
@@ -970,7 +1047,7 @@ public final class RpcResponse {
       protected com.google.protobuf.MapField internalGetMutableMapField(
           int number) {
         switch (number) {
-          case 5:
+          case 6:
             return internalGetMutableResult();
           default:
             throw new RuntimeException(
@@ -1004,6 +1081,8 @@ public final class RpcResponse {
       public Builder clear() {
         super.clear();
         code_ = 0;
+
+        url_ = "";
 
         message_ = "";
 
@@ -1041,6 +1120,7 @@ public final class RpcResponse {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         result.code_ = code_;
+        result.url_ = url_;
         result.message_ = message_;
         result.resultType_ = resultType_;
         result.jsonResult_ = jsonResult_;
@@ -1097,6 +1177,10 @@ public final class RpcResponse {
         if (other == MResponse.getDefaultInstance()) return this;
         if (other.code_ != 0) {
           setCodeValue(other.getCodeValue());
+        }
+        if (!other.getUrl().isEmpty()) {
+          url_ = other.url_;
+          onChanged();
         }
         if (!other.getMessage().isEmpty()) {
           message_ = other.message_;
@@ -1206,13 +1290,102 @@ public final class RpcResponse {
         return this;
       }
 
+      private Object url_ = "";
+      /**
+       * <pre>
+       *返回路由
+       * </pre>
+       *
+       * <code>string url = 2;</code>
+       */
+      public String getUrl() {
+        Object ref = url_;
+        if (!(ref instanceof String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          String s = bs.toStringUtf8();
+          url_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      /**
+       * <pre>
+       *返回路由
+       * </pre>
+       *
+       * <code>string url = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUrlBytes() {
+        Object ref = url_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (String) ref);
+          url_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       *返回路由
+       * </pre>
+       *
+       * <code>string url = 2;</code>
+       */
+      public Builder setUrl(
+          String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        url_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *返回路由
+       * </pre>
+       *
+       * <code>string url = 2;</code>
+       */
+      public Builder clearUrl() {
+        
+        url_ = getDefaultInstance().getUrl();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *返回路由
+       * </pre>
+       *
+       * <code>string url = 2;</code>
+       */
+      public Builder setUrlBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        url_ = value;
+        onChanged();
+        return this;
+      }
+
       private Object message_ = "";
       /**
        * <pre>
        *消息提示
        * </pre>
        *
-       * <code>string message = 2;</code>
+       * <code>string message = 3;</code>
        */
       public String getMessage() {
         Object ref = message_;
@@ -1231,7 +1404,7 @@ public final class RpcResponse {
        *消息提示
        * </pre>
        *
-       * <code>string message = 2;</code>
+       * <code>string message = 3;</code>
        */
       public com.google.protobuf.ByteString
           getMessageBytes() {
@@ -1251,7 +1424,7 @@ public final class RpcResponse {
        *消息提示
        * </pre>
        *
-       * <code>string message = 2;</code>
+       * <code>string message = 3;</code>
        */
       public Builder setMessage(
           String value) {
@@ -1268,7 +1441,7 @@ public final class RpcResponse {
        *消息提示
        * </pre>
        *
-       * <code>string message = 2;</code>
+       * <code>string message = 3;</code>
        */
       public Builder clearMessage() {
         
@@ -1281,7 +1454,7 @@ public final class RpcResponse {
        *消息提示
        * </pre>
        *
-       * <code>string message = 2;</code>
+       * <code>string message = 3;</code>
        */
       public Builder setMessageBytes(
           com.google.protobuf.ByteString value) {
@@ -1301,7 +1474,7 @@ public final class RpcResponse {
        *返回的数据类型
        * </pre>
        *
-       * <code>.MResponse.ResultType resultType = 3;</code>
+       * <code>.MResponse.ResultType resultType = 4;</code>
        */
       public int getResultTypeValue() {
         return resultType_;
@@ -1311,7 +1484,7 @@ public final class RpcResponse {
        *返回的数据类型
        * </pre>
        *
-       * <code>.MResponse.ResultType resultType = 3;</code>
+       * <code>.MResponse.ResultType resultType = 4;</code>
        */
       public Builder setResultTypeValue(int value) {
         resultType_ = value;
@@ -1323,7 +1496,7 @@ public final class RpcResponse {
        *返回的数据类型
        * </pre>
        *
-       * <code>.MResponse.ResultType resultType = 3;</code>
+       * <code>.MResponse.ResultType resultType = 4;</code>
        */
       public ResultType getResultType() {
         @SuppressWarnings("deprecation")
@@ -1335,7 +1508,7 @@ public final class RpcResponse {
        *返回的数据类型
        * </pre>
        *
-       * <code>.MResponse.ResultType resultType = 3;</code>
+       * <code>.MResponse.ResultType resultType = 4;</code>
        */
       public Builder setResultType(ResultType value) {
         if (value == null) {
@@ -1351,7 +1524,7 @@ public final class RpcResponse {
        *返回的数据类型
        * </pre>
        *
-       * <code>.MResponse.ResultType resultType = 3;</code>
+       * <code>.MResponse.ResultType resultType = 4;</code>
        */
       public Builder clearResultType() {
         
@@ -1366,7 +1539,7 @@ public final class RpcResponse {
        *json返回格式
        * </pre>
        *
-       * <code>string jsonResult = 4;</code>
+       * <code>string jsonResult = 5;</code>
        */
       public String getJsonResult() {
         Object ref = jsonResult_;
@@ -1385,7 +1558,7 @@ public final class RpcResponse {
        *json返回格式
        * </pre>
        *
-       * <code>string jsonResult = 4;</code>
+       * <code>string jsonResult = 5;</code>
        */
       public com.google.protobuf.ByteString
           getJsonResultBytes() {
@@ -1405,7 +1578,7 @@ public final class RpcResponse {
        *json返回格式
        * </pre>
        *
-       * <code>string jsonResult = 4;</code>
+       * <code>string jsonResult = 5;</code>
        */
       public Builder setJsonResult(
           String value) {
@@ -1422,7 +1595,7 @@ public final class RpcResponse {
        *json返回格式
        * </pre>
        *
-       * <code>string jsonResult = 4;</code>
+       * <code>string jsonResult = 5;</code>
        */
       public Builder clearJsonResult() {
         
@@ -1435,7 +1608,7 @@ public final class RpcResponse {
        *json返回格式
        * </pre>
        *
-       * <code>string jsonResult = 4;</code>
+       * <code>string jsonResult = 5;</code>
        */
       public Builder setJsonResultBytes(
           com.google.protobuf.ByteString value) {
@@ -1480,7 +1653,7 @@ public final class RpcResponse {
        *序列化对象 N个
        * </pre>
        *
-       * <code>map&lt;string, .google.protobuf.Any&gt; result = 5;</code>
+       * <code>map&lt;string, .google.protobuf.Any&gt; result = 6;</code>
        */
 
       public boolean containsResult(
@@ -1500,7 +1673,7 @@ public final class RpcResponse {
        *序列化对象 N个
        * </pre>
        *
-       * <code>map&lt;string, .google.protobuf.Any&gt; result = 5;</code>
+       * <code>map&lt;string, .google.protobuf.Any&gt; result = 6;</code>
        */
 
       public java.util.Map<String, com.google.protobuf.Any> getResultMap() {
@@ -1511,7 +1684,7 @@ public final class RpcResponse {
        *序列化对象 N个
        * </pre>
        *
-       * <code>map&lt;string, .google.protobuf.Any&gt; result = 5;</code>
+       * <code>map&lt;string, .google.protobuf.Any&gt; result = 6;</code>
        */
 
       public com.google.protobuf.Any getResultOrDefault(
@@ -1527,7 +1700,7 @@ public final class RpcResponse {
        *序列化对象 N个
        * </pre>
        *
-       * <code>map&lt;string, .google.protobuf.Any&gt; result = 5;</code>
+       * <code>map&lt;string, .google.protobuf.Any&gt; result = 6;</code>
        */
 
       public com.google.protobuf.Any getResultOrThrow(
@@ -1551,7 +1724,7 @@ public final class RpcResponse {
        *序列化对象 N个
        * </pre>
        *
-       * <code>map&lt;string, .google.protobuf.Any&gt; result = 5;</code>
+       * <code>map&lt;string, .google.protobuf.Any&gt; result = 6;</code>
        */
 
       public Builder removeResult(
@@ -1574,7 +1747,7 @@ public final class RpcResponse {
        *序列化对象 N个
        * </pre>
        *
-       * <code>map&lt;string, .google.protobuf.Any&gt; result = 5;</code>
+       * <code>map&lt;string, .google.protobuf.Any&gt; result = 6;</code>
        */
       public Builder putResult(
           String key,
@@ -1590,7 +1763,7 @@ public final class RpcResponse {
        *序列化对象 N个
        * </pre>
        *
-       * <code>map&lt;string, .google.protobuf.Any&gt; result = 5;</code>
+       * <code>map&lt;string, .google.protobuf.Any&gt; result = 6;</code>
        */
 
       public Builder putAllResult(
@@ -1672,15 +1845,16 @@ public final class RpcResponse {
   static {
     String[] descriptorData = {
       "\n\021RpcResponse.proto\032\031google/protobuf/any" +
-      ".proto\"\274\002\n\tMResponse\022\035\n\004code\030\001 \001(\0162\017.MRe" +
-      "sponse.Code\022\017\n\007message\030\002 \001(\t\022)\n\nresultTy" +
-      "pe\030\003 \001(\0162\025.MResponse.ResultType\022\022\n\njsonR" +
-      "esult\030\004 \001(\t\022&\n\006result\030\005 \003(\0132\026.MResponse." +
-      "ResultEntry\032C\n\013ResultEntry\022\013\n\003key\030\001 \001(\t\022" +
-      "#\n\005value\030\002 \001(\0132\024.google.protobuf.Any:\0028\001" +
-      "\"/\n\004Code\022\013\n\007SUCCESS\020\000\022\013\n\007EX_BUSS\020\001\022\r\n\tEX" +
-      "_SERVER\020\002\"\"\n\nResultType\022\010\n\004JSON\020\000\022\n\n\006BIN" +
-      "ARY\020\001B\rB\013RpcResponseb\006proto3"
+      ".proto\"\311\002\n\tMResponse\022\035\n\004code\030\001 \001(\0162\017.MRe" +
+      "sponse.Code\022\013\n\003url\030\002 \001(\t\022\017\n\007message\030\003 \001(" +
+      "\t\022)\n\nresultType\030\004 \001(\0162\025.MResponse.Result" +
+      "Type\022\022\n\njsonResult\030\005 \001(\t\022&\n\006result\030\006 \003(\013" +
+      "2\026.MResponse.ResultEntry\032C\n\013ResultEntry\022" +
+      "\013\n\003key\030\001 \001(\t\022#\n\005value\030\002 \001(\0132\024.google.pro" +
+      "tobuf.Any:\0028\001\"/\n\004Code\022\013\n\007SUCCESS\020\000\022\013\n\007EX" +
+      "_BUSS\020\001\022\r\n\tEX_SERVER\020\002\"\"\n\nResultType\022\010\n\004" +
+      "JSON\020\000\022\n\n\006BINARY\020\001B\rB\013RpcResponseb\006proto" +
+      "3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1700,7 +1874,7 @@ public final class RpcResponse {
     internal_static_MResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_MResponse_descriptor,
-        new String[] { "Code", "Message", "ResultType", "JsonResult", "Result", });
+        new String[] { "Code", "Url", "Message", "ResultType", "JsonResult", "Result", });
     internal_static_MResponse_ResultEntry_descriptor =
       internal_static_MResponse_descriptor.getNestedTypes().get(0);
     internal_static_MResponse_ResultEntry_fieldAccessorTable = new

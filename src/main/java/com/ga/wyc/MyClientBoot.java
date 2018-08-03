@@ -2,7 +2,6 @@ package com.ga.wyc;
 
 
 
-import com.ga.wyc.domain.entity.RpcRequest;
 import com.ga.wyc.domain.entity.RpcResponse;
 import com.ga.wyc.handler.RpcClientHandler;
 import io.netty.bootstrap.Bootstrap;
@@ -17,6 +16,10 @@ import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
 
 
 import java.net.InetSocketAddress;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class MyClientBoot {
     private final String host;
@@ -70,7 +73,8 @@ public class MyClientBoot {
     }
 
     public static void main(String[] args) throws Exception {
-        new MyClientBoot("127.0.0.1", 7000).start();
+        new MyClientBoot("192.168.2.123", 7001).start();
+
     }
 
 }

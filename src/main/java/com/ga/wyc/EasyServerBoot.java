@@ -1,8 +1,9 @@
 package com.ga.wyc;
 
 
+import com.ga.wyc.domain.entity.MEasy;
 import com.ga.wyc.domain.entity.RpcRequest;
-import com.ga.wyc.domain.entity.RpcResponse;
+import com.ga.wyc.handler.EasyServerHandler;
 import com.ga.wyc.handler.HeartBeatServerHandler;
 import com.ga.wyc.handler.RpcServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
@@ -18,16 +19,15 @@ import io.netty.handler.timeout.IdleStateHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 import java.net.InetSocketAddress;
 import java.util.concurrent.TimeUnit;
 
-public class MyServerBoot {
+public class EasyServerBoot {
     private static final int port = 7000;
     private final EventLoopGroup bossGroup = new NioEventLoopGroup();
     private final EventLoopGroup workerGroup = new NioEventLoopGroup();
     private Channel channel;
-    private Logger log= LoggerFactory.getLogger(MyServerBoot.class);
+    private Logger log= LoggerFactory.getLogger(EasyServerBoot.class);
 
     public ChannelFuture  start() throws InterruptedException{
         ServerBootstrap b=new ServerBootstrap();
@@ -44,16 +44,14 @@ public class MyServerBoot {
                     pipeline.addLast("frameDecoder", new ProtobufVarint32FrameDecoder());// 用于decode前解决半包和粘包问题（利用包头中的包含数组长度来识别半包粘包）
                     //配置Protobuf解码处理器，消息接收到了就会自动解码，ProtobufDecoder是netty自带的，Message是自己定义的Protobuf类
                     pipeline.addLast("protobufDecoder",
-                            new ProtobufDecoder(RpcRequest.MRequest.getDefaultInstance()));
+                            new ProtobufDecoder(MEasy.Easy.getDefaultInstance()));
                     // 用于在序列化的字节数组前加上一个简单的包头，只包含序列化的字节长度。
                     pipeline.addLast("frameEncoder",
                             new ProtobufVarint32LengthFieldPrepender());
                     //配置Protobuf编码器，发送的消息会先经过编码
                     pipeline.addLast("protobufEncoder", new ProtobufEncoder());
-                    pipeline.addLast(new IdleStateHandler(10,0,0, TimeUnit.SECONDS));
                     // ----Protobuf处理器END----
-                    pipeline.addLast("handler", new RpcServerHandler());//自己定义的消息处理器，接收消息会在这个类处理
-                    pipeline.addLast(new HeartBeatServerHandler());
+                    pipeline.addLast("handler", new EasyServerHandler());//自己定义的消息处理器，接收消息会在这个类处理
                 }
             }).option(ChannelOption.SO_BACKLOG, 128)//最大客户端连接数为128
                     .childOption(ChannelOption.SO_KEEPALIVE, true);
@@ -83,6 +81,6 @@ public class MyServerBoot {
     }
 
     public static void main(String[] args) throws Exception {
-        new MyServerBoot().start();
+        new EasyServerBoot().start();
     }
 }

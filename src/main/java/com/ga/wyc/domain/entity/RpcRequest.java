@@ -38,43 +38,25 @@ public final class RpcRequest {
      *classname
      * </pre>
      *
-     * <code>string className = 2;</code>
+     * <code>string url = 2;</code>
      */
-    String getClassName();
+    String getUrl();
     /**
      * <pre>
      *classname
      * </pre>
      *
-     * <code>string className = 2;</code>
+     * <code>string url = 2;</code>
      */
     com.google.protobuf.ByteString
-        getClassNameBytes();
-
-    /**
-     * <pre>
-     *方法
-     * </pre>
-     *
-     * <code>string method = 3;</code>
-     */
-    String getMethod();
-    /**
-     * <pre>
-     *方法
-     * </pre>
-     *
-     * <code>string method = 3;</code>
-     */
-    com.google.protobuf.ByteString
-        getMethodBytes();
+        getUrlBytes();
 
     /**
      * <pre>
      *jsonStr
      * </pre>
      *
-     * <code>string jsonStr = 4;</code>
+     * <code>string jsonStr = 3;</code>
      */
     String getJsonStr();
     /**
@@ -82,7 +64,7 @@ public final class RpcRequest {
      *jsonStr
      * </pre>
      *
-     * <code>string jsonStr = 4;</code>
+     * <code>string jsonStr = 3;</code>
      */
     com.google.protobuf.ByteString
         getJsonStrBytes();
@@ -92,7 +74,7 @@ public final class RpcRequest {
      *序列化对象 N个
      * </pre>
      *
-     * <code>map&lt;string, .google.protobuf.Any&gt; params = 5;</code>
+     * <code>map&lt;string, .google.protobuf.Any&gt; params = 4;</code>
      */
     int getParamsCount();
     /**
@@ -100,7 +82,7 @@ public final class RpcRequest {
      *序列化对象 N个
      * </pre>
      *
-     * <code>map&lt;string, .google.protobuf.Any&gt; params = 5;</code>
+     * <code>map&lt;string, .google.protobuf.Any&gt; params = 4;</code>
      */
     boolean containsParams(
             String key);
@@ -115,7 +97,7 @@ public final class RpcRequest {
      *序列化对象 N个
      * </pre>
      *
-     * <code>map&lt;string, .google.protobuf.Any&gt; params = 5;</code>
+     * <code>map&lt;string, .google.protobuf.Any&gt; params = 4;</code>
      */
     java.util.Map<String, com.google.protobuf.Any>
     getParamsMap();
@@ -124,7 +106,7 @@ public final class RpcRequest {
      *序列化对象 N个
      * </pre>
      *
-     * <code>map&lt;string, .google.protobuf.Any&gt; params = 5;</code>
+     * <code>map&lt;string, .google.protobuf.Any&gt; params = 4;</code>
      */
 
     com.google.protobuf.Any getParamsOrDefault(
@@ -135,7 +117,7 @@ public final class RpcRequest {
      *序列化对象 N个
      * </pre>
      *
-     * <code>map&lt;string, .google.protobuf.Any&gt; params = 5;</code>
+     * <code>map&lt;string, .google.protobuf.Any&gt; params = 4;</code>
      */
 
     com.google.protobuf.Any getParamsOrThrow(
@@ -155,8 +137,7 @@ public final class RpcRequest {
     }
     private MRequest() {
       messageType_ = 0;
-      className_ = "";
-      method_ = "";
+      url_ = "";
       jsonStr_ = "";
     }
 
@@ -193,26 +174,20 @@ public final class RpcRequest {
             case 18: {
               String s = input.readStringRequireUtf8();
 
-              className_ = s;
+              url_ = s;
               break;
             }
             case 26: {
               String s = input.readStringRequireUtf8();
 
-              method_ = s;
-              break;
-            }
-            case 34: {
-              String s = input.readStringRequireUtf8();
-
               jsonStr_ = s;
               break;
             }
-            case 42: {
-              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+            case 34: {
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
                 params_ = com.google.protobuf.MapField.newMapField(
                     ParamsDefaultEntryHolder.defaultEntry);
-                mutable_bitField0_ |= 0x00000010;
+                mutable_bitField0_ |= 0x00000008;
               }
               com.google.protobuf.MapEntry<String, com.google.protobuf.Any>
               params__ = input.readMessage(
@@ -250,7 +225,7 @@ public final class RpcRequest {
     protected com.google.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
-        case 5:
+        case 4:
           return internalGetParams();
         default:
           throw new RuntimeException(
@@ -405,24 +380,24 @@ public final class RpcRequest {
       return result == null ? MessageType.UNRECOGNIZED : result;
     }
 
-    public static final int CLASSNAME_FIELD_NUMBER = 2;
-    private volatile Object className_;
+    public static final int URL_FIELD_NUMBER = 2;
+    private volatile Object url_;
     /**
      * <pre>
      *classname
      * </pre>
      *
-     * <code>string className = 2;</code>
+     * <code>string url = 2;</code>
      */
-    public String getClassName() {
-      Object ref = className_;
+    public String getUrl() {
+      Object ref = url_;
       if (ref instanceof String) {
         return (String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         String s = bs.toStringUtf8();
-        className_ = s;
+        url_ = s;
         return s;
       }
     }
@@ -431,72 +406,30 @@ public final class RpcRequest {
      *classname
      * </pre>
      *
-     * <code>string className = 2;</code>
+     * <code>string url = 2;</code>
      */
     public com.google.protobuf.ByteString
-        getClassNameBytes() {
-      Object ref = className_;
+        getUrlBytes() {
+      Object ref = url_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (String) ref);
-        className_ = b;
+        url_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int METHOD_FIELD_NUMBER = 3;
-    private volatile Object method_;
-    /**
-     * <pre>
-     *方法
-     * </pre>
-     *
-     * <code>string method = 3;</code>
-     */
-    public String getMethod() {
-      Object ref = method_;
-      if (ref instanceof String) {
-        return (String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        method_ = s;
-        return s;
-      }
-    }
-    /**
-     * <pre>
-     *方法
-     * </pre>
-     *
-     * <code>string method = 3;</code>
-     */
-    public com.google.protobuf.ByteString
-        getMethodBytes() {
-      Object ref = method_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (String) ref);
-        method_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int JSONSTR_FIELD_NUMBER = 4;
+    public static final int JSONSTR_FIELD_NUMBER = 3;
     private volatile Object jsonStr_;
     /**
      * <pre>
      *jsonStr
      * </pre>
      *
-     * <code>string jsonStr = 4;</code>
+     * <code>string jsonStr = 3;</code>
      */
     public String getJsonStr() {
       Object ref = jsonStr_;
@@ -515,7 +448,7 @@ public final class RpcRequest {
      *jsonStr
      * </pre>
      *
-     * <code>string jsonStr = 4;</code>
+     * <code>string jsonStr = 3;</code>
      */
     public com.google.protobuf.ByteString
         getJsonStrBytes() {
@@ -531,7 +464,7 @@ public final class RpcRequest {
       }
     }
 
-    public static final int PARAMS_FIELD_NUMBER = 5;
+    public static final int PARAMS_FIELD_NUMBER = 4;
     private static final class ParamsDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
           String, com.google.protobuf.Any> defaultEntry =
@@ -562,7 +495,7 @@ public final class RpcRequest {
      *序列化对象 N个
      * </pre>
      *
-     * <code>map&lt;string, .google.protobuf.Any&gt; params = 5;</code>
+     * <code>map&lt;string, .google.protobuf.Any&gt; params = 4;</code>
      */
 
     public boolean containsParams(
@@ -582,7 +515,7 @@ public final class RpcRequest {
      *序列化对象 N个
      * </pre>
      *
-     * <code>map&lt;string, .google.protobuf.Any&gt; params = 5;</code>
+     * <code>map&lt;string, .google.protobuf.Any&gt; params = 4;</code>
      */
 
     public java.util.Map<String, com.google.protobuf.Any> getParamsMap() {
@@ -593,7 +526,7 @@ public final class RpcRequest {
      *序列化对象 N个
      * </pre>
      *
-     * <code>map&lt;string, .google.protobuf.Any&gt; params = 5;</code>
+     * <code>map&lt;string, .google.protobuf.Any&gt; params = 4;</code>
      */
 
     public com.google.protobuf.Any getParamsOrDefault(
@@ -609,7 +542,7 @@ public final class RpcRequest {
      *序列化对象 N个
      * </pre>
      *
-     * <code>map&lt;string, .google.protobuf.Any&gt; params = 5;</code>
+     * <code>map&lt;string, .google.protobuf.Any&gt; params = 4;</code>
      */
 
     public com.google.protobuf.Any getParamsOrThrow(
@@ -640,21 +573,18 @@ public final class RpcRequest {
       if (messageType_ != MessageType.JSON.getNumber()) {
         output.writeEnum(1, messageType_);
       }
-      if (!getClassNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, className_);
-      }
-      if (!getMethodBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, method_);
+      if (!getUrlBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, url_);
       }
       if (!getJsonStrBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, jsonStr_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, jsonStr_);
       }
       com.google.protobuf.GeneratedMessageV3
         .serializeStringMapTo(
           output,
           internalGetParams(),
           ParamsDefaultEntryHolder.defaultEntry,
-          5);
+          4);
       unknownFields.writeTo(output);
     }
 
@@ -668,14 +598,11 @@ public final class RpcRequest {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, messageType_);
       }
-      if (!getClassNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, className_);
-      }
-      if (!getMethodBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, method_);
+      if (!getUrlBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, url_);
       }
       if (!getJsonStrBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, jsonStr_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, jsonStr_);
       }
       for (java.util.Map.Entry<String, com.google.protobuf.Any> entry
            : internalGetParams().getMap().entrySet()) {
@@ -685,7 +612,7 @@ public final class RpcRequest {
             .setValue(entry.getValue())
             .build();
         size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(5, params__);
+            .computeMessageSize(4, params__);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -704,10 +631,8 @@ public final class RpcRequest {
 
       boolean result = true;
       result = result && messageType_ == other.messageType_;
-      result = result && getClassName()
-          .equals(other.getClassName());
-      result = result && getMethod()
-          .equals(other.getMethod());
+      result = result && getUrl()
+          .equals(other.getUrl());
       result = result && getJsonStr()
           .equals(other.getJsonStr());
       result = result && internalGetParams().equals(
@@ -725,10 +650,8 @@ public final class RpcRequest {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + MESSAGETYPE_FIELD_NUMBER;
       hash = (53 * hash) + messageType_;
-      hash = (37 * hash) + CLASSNAME_FIELD_NUMBER;
-      hash = (53 * hash) + getClassName().hashCode();
-      hash = (37 * hash) + METHOD_FIELD_NUMBER;
-      hash = (53 * hash) + getMethod().hashCode();
+      hash = (37 * hash) + URL_FIELD_NUMBER;
+      hash = (53 * hash) + getUrl().hashCode();
       hash = (37 * hash) + JSONSTR_FIELD_NUMBER;
       hash = (53 * hash) + getJsonStr().hashCode();
       if (!internalGetParams().getMap().isEmpty()) {
@@ -846,7 +769,7 @@ public final class RpcRequest {
       protected com.google.protobuf.MapField internalGetMapField(
           int number) {
         switch (number) {
-          case 5:
+          case 4:
             return internalGetParams();
           default:
             throw new RuntimeException(
@@ -857,7 +780,7 @@ public final class RpcRequest {
       protected com.google.protobuf.MapField internalGetMutableMapField(
           int number) {
         switch (number) {
-          case 5:
+          case 4:
             return internalGetMutableParams();
           default:
             throw new RuntimeException(
@@ -892,9 +815,7 @@ public final class RpcRequest {
         super.clear();
         messageType_ = 0;
 
-        className_ = "";
-
-        method_ = "";
+        url_ = "";
 
         jsonStr_ = "";
 
@@ -928,8 +849,7 @@ public final class RpcRequest {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         result.messageType_ = messageType_;
-        result.className_ = className_;
-        result.method_ = method_;
+        result.url_ = url_;
         result.jsonStr_ = jsonStr_;
         result.params_ = internalGetParams();
         result.params_.makeImmutable();
@@ -985,12 +905,8 @@ public final class RpcRequest {
         if (other.messageType_ != 0) {
           setMessageTypeValue(other.getMessageTypeValue());
         }
-        if (!other.getClassName().isEmpty()) {
-          className_ = other.className_;
-          onChanged();
-        }
-        if (!other.getMethod().isEmpty()) {
-          method_ = other.method_;
+        if (!other.getUrl().isEmpty()) {
+          url_ = other.url_;
           onChanged();
         }
         if (!other.getJsonStr().isEmpty()) {
@@ -1094,21 +1010,21 @@ public final class RpcRequest {
         return this;
       }
 
-      private Object className_ = "";
+      private Object url_ = "";
       /**
        * <pre>
        *classname
        * </pre>
        *
-       * <code>string className = 2;</code>
+       * <code>string url = 2;</code>
        */
-      public String getClassName() {
-        Object ref = className_;
+      public String getUrl() {
+        Object ref = url_;
         if (!(ref instanceof String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           String s = bs.toStringUtf8();
-          className_ = s;
+          url_ = s;
           return s;
         } else {
           return (String) ref;
@@ -1119,16 +1035,16 @@ public final class RpcRequest {
        *classname
        * </pre>
        *
-       * <code>string className = 2;</code>
+       * <code>string url = 2;</code>
        */
       public com.google.protobuf.ByteString
-          getClassNameBytes() {
-        Object ref = className_;
+          getUrlBytes() {
+        Object ref = url_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (String) ref);
-          className_ = b;
+          url_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
@@ -1139,15 +1055,15 @@ public final class RpcRequest {
        *classname
        * </pre>
        *
-       * <code>string className = 2;</code>
+       * <code>string url = 2;</code>
        */
-      public Builder setClassName(
+      public Builder setUrl(
           String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        className_ = value;
+        url_ = value;
         onChanged();
         return this;
       }
@@ -1156,11 +1072,11 @@ public final class RpcRequest {
        *classname
        * </pre>
        *
-       * <code>string className = 2;</code>
+       * <code>string url = 2;</code>
        */
-      public Builder clearClassName() {
+      public Builder clearUrl() {
         
-        className_ = getDefaultInstance().getClassName();
+        url_ = getDefaultInstance().getUrl();
         onChanged();
         return this;
       }
@@ -1169,105 +1085,16 @@ public final class RpcRequest {
        *classname
        * </pre>
        *
-       * <code>string className = 2;</code>
+       * <code>string url = 2;</code>
        */
-      public Builder setClassNameBytes(
+      public Builder setUrlBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        className_ = value;
-        onChanged();
-        return this;
-      }
-
-      private Object method_ = "";
-      /**
-       * <pre>
-       *方法
-       * </pre>
-       *
-       * <code>string method = 3;</code>
-       */
-      public String getMethod() {
-        Object ref = method_;
-        if (!(ref instanceof String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          String s = bs.toStringUtf8();
-          method_ = s;
-          return s;
-        } else {
-          return (String) ref;
-        }
-      }
-      /**
-       * <pre>
-       *方法
-       * </pre>
-       *
-       * <code>string method = 3;</code>
-       */
-      public com.google.protobuf.ByteString
-          getMethodBytes() {
-        Object ref = method_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
-          method_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <pre>
-       *方法
-       * </pre>
-       *
-       * <code>string method = 3;</code>
-       */
-      public Builder setMethod(
-          String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        method_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       *方法
-       * </pre>
-       *
-       * <code>string method = 3;</code>
-       */
-      public Builder clearMethod() {
-        
-        method_ = getDefaultInstance().getMethod();
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       *方法
-       * </pre>
-       *
-       * <code>string method = 3;</code>
-       */
-      public Builder setMethodBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        method_ = value;
+        url_ = value;
         onChanged();
         return this;
       }
@@ -1278,7 +1105,7 @@ public final class RpcRequest {
        *jsonStr
        * </pre>
        *
-       * <code>string jsonStr = 4;</code>
+       * <code>string jsonStr = 3;</code>
        */
       public String getJsonStr() {
         Object ref = jsonStr_;
@@ -1297,7 +1124,7 @@ public final class RpcRequest {
        *jsonStr
        * </pre>
        *
-       * <code>string jsonStr = 4;</code>
+       * <code>string jsonStr = 3;</code>
        */
       public com.google.protobuf.ByteString
           getJsonStrBytes() {
@@ -1317,7 +1144,7 @@ public final class RpcRequest {
        *jsonStr
        * </pre>
        *
-       * <code>string jsonStr = 4;</code>
+       * <code>string jsonStr = 3;</code>
        */
       public Builder setJsonStr(
           String value) {
@@ -1334,7 +1161,7 @@ public final class RpcRequest {
        *jsonStr
        * </pre>
        *
-       * <code>string jsonStr = 4;</code>
+       * <code>string jsonStr = 3;</code>
        */
       public Builder clearJsonStr() {
         
@@ -1347,7 +1174,7 @@ public final class RpcRequest {
        *jsonStr
        * </pre>
        *
-       * <code>string jsonStr = 4;</code>
+       * <code>string jsonStr = 3;</code>
        */
       public Builder setJsonStrBytes(
           com.google.protobuf.ByteString value) {
@@ -1392,7 +1219,7 @@ public final class RpcRequest {
        *序列化对象 N个
        * </pre>
        *
-       * <code>map&lt;string, .google.protobuf.Any&gt; params = 5;</code>
+       * <code>map&lt;string, .google.protobuf.Any&gt; params = 4;</code>
        */
 
       public boolean containsParams(
@@ -1412,7 +1239,7 @@ public final class RpcRequest {
        *序列化对象 N个
        * </pre>
        *
-       * <code>map&lt;string, .google.protobuf.Any&gt; params = 5;</code>
+       * <code>map&lt;string, .google.protobuf.Any&gt; params = 4;</code>
        */
 
       public java.util.Map<String, com.google.protobuf.Any> getParamsMap() {
@@ -1423,7 +1250,7 @@ public final class RpcRequest {
        *序列化对象 N个
        * </pre>
        *
-       * <code>map&lt;string, .google.protobuf.Any&gt; params = 5;</code>
+       * <code>map&lt;string, .google.protobuf.Any&gt; params = 4;</code>
        */
 
       public com.google.protobuf.Any getParamsOrDefault(
@@ -1439,7 +1266,7 @@ public final class RpcRequest {
        *序列化对象 N个
        * </pre>
        *
-       * <code>map&lt;string, .google.protobuf.Any&gt; params = 5;</code>
+       * <code>map&lt;string, .google.protobuf.Any&gt; params = 4;</code>
        */
 
       public com.google.protobuf.Any getParamsOrThrow(
@@ -1463,7 +1290,7 @@ public final class RpcRequest {
        *序列化对象 N个
        * </pre>
        *
-       * <code>map&lt;string, .google.protobuf.Any&gt; params = 5;</code>
+       * <code>map&lt;string, .google.protobuf.Any&gt; params = 4;</code>
        */
 
       public Builder removeParams(
@@ -1486,7 +1313,7 @@ public final class RpcRequest {
        *序列化对象 N个
        * </pre>
        *
-       * <code>map&lt;string, .google.protobuf.Any&gt; params = 5;</code>
+       * <code>map&lt;string, .google.protobuf.Any&gt; params = 4;</code>
        */
       public Builder putParams(
           String key,
@@ -1502,7 +1329,7 @@ public final class RpcRequest {
        *序列化对象 N个
        * </pre>
        *
-       * <code>map&lt;string, .google.protobuf.Any&gt; params = 5;</code>
+       * <code>map&lt;string, .google.protobuf.Any&gt; params = 4;</code>
        */
 
       public Builder putAllParams(
@@ -1584,14 +1411,13 @@ public final class RpcRequest {
   static {
     String[] descriptorData = {
       "\n\020RpcRequest.proto\032\031google/protobuf/any." +
-      "proto\"\373\001\n\010MRequest\022*\n\013messageType\030\001 \001(\0162" +
-      "\025.MRequest.MessageType\022\021\n\tclassName\030\002 \001(" +
-      "\t\022\016\n\006method\030\003 \001(\t\022\017\n\007jsonStr\030\004 \001(\t\022%\n\006pa" +
-      "rams\030\005 \003(\0132\025.MRequest.ParamsEntry\032C\n\013Par" +
-      "amsEntry\022\013\n\003key\030\001 \001(\t\022#\n\005value\030\002 \001(\0132\024.g" +
-      "oogle.protobuf.Any:\0028\001\"#\n\013MessageType\022\010\n" +
-      "\004JSON\020\000\022\n\n\006BINARY\020\001B\014B\nRpcRequestb\006proto" +
-      "3"
+      "proto\"\345\001\n\010MRequest\022*\n\013messageType\030\001 \001(\0162" +
+      "\025.MRequest.MessageType\022\013\n\003url\030\002 \001(\t\022\017\n\007j" +
+      "sonStr\030\003 \001(\t\022%\n\006params\030\004 \003(\0132\025.MRequest." +
+      "ParamsEntry\032C\n\013ParamsEntry\022\013\n\003key\030\001 \001(\t\022" +
+      "#\n\005value\030\002 \001(\0132\024.google.protobuf.Any:\0028\001" +
+      "\"#\n\013MessageType\022\010\n\004JSON\020\000\022\n\n\006BINARY\020\001B\014B" +
+      "\nRpcRequestb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1611,7 +1437,7 @@ public final class RpcRequest {
     internal_static_MRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_MRequest_descriptor,
-        new String[] { "MessageType", "ClassName", "Method", "JsonStr", "Params", });
+        new String[] { "MessageType", "Url", "JsonStr", "Params", });
     internal_static_MRequest_ParamsEntry_descriptor =
       internal_static_MRequest_descriptor.getNestedTypes().get(0);
     internal_static_MRequest_ParamsEntry_fieldAccessorTable = new
